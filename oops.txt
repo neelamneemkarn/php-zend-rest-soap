@@ -1,0 +1,278 @@
+1)concatenation:
+two strings are combined to form 1 string
+for example:
+<?php
+    $name="Jhon";
+    $lastName="Travolta";
+    echo $name." ".$lastName; // Outputs John Travolta
+    
+    $a="Hello";
+    $a .= " Jhon!";
+    echo $a; // Outputs Hello Jhon!
+?>
+2)how to define new class in PHP.?
+
+<?php
+   class Books {
+      /* Member variables */
+      var $price;
+      var $title;
+      
+      /* Member functions */
+      function setPrice($par){
+         $this->price = $par;
+      }
+      
+      function getPrice(){
+         echo $this->price ."<br/>";
+      }
+      
+      function setTitle($par){
+         $this->title = $par;
+      }
+      
+      function getTitle(){
+         echo $this->title ." <br/>";
+      }
+   }
+?>
+
+
+3)how to create an object.?
+
+$physics = new Books;
+$maths = new Books;
+$chemistry = new Books;
+
+here $ followed by variables are objects..where as new books is a class.
+
+4)calling member functions:
+
+$physics->setTitle( "Physics for High School" );
+$chemistry->setTitle( "Advanced Chemistry" );
+$maths->setTitle( "Algebra" );
+
+$physics->setPrice( 10 );
+$chemistry->setPrice( 15 );
+$maths->setPrice( 7 );
+
+
+$physics->getTitle();
+$chemistry->getTitle();
+$maths->getTitle();
+$physics->getPrice();
+$chemistry->getPrice();
+$maths->getPrice();
+
+5)constructor functions:
+
+constructor functions are called when the object is created.in php we will use as _constructor()
+
+   function __construct( $par1, $par2 ) {
+   $this->title = $par1;
+   $this->price = $par2;
+}
+
+here we dont need to call the function because it is automatically called when the object is created 
+
+$physics = new Books( "Physics for High School", 10 );
+$maths = new Books ( "Advanced Chemistry", 15 );
+$chemistry = new Books ("Algebra", 7 );
+
+/* Get those set values */
+$physics->getTitle();
+$chemistry->getTitle();
+$maths->getTitle();
+
+$physics->getPrice();
+$chemistry->getPrice();
+$maths->getPrice();
+
+
+6) inheritance:
+
+here the child class inerits the properties of parent class
+
+it can used by extends clause
+
+for example:
+class Child extends Parent {
+   <definition body>
+}
+
+class Novel extends Books {
+   var $publisher;
+   
+   function setPublisher($par){
+      $this->publisher = $par;
+   }
+   
+   function getPublisher(){
+      echo $this->publisher. "<br />";
+   }
+}
+
+7)function overriding: here we can modify the defination but not the name 
+
+function getPrice() {
+   echo $this->price . "<br/>";
+   return $this->price;
+}
+   
+function getTitle(){
+   echo $this->title . "<br/>";
+   return $this->title;
+}
+
+8) how to create private ,public and protected.??
+
+private class:
+
+class MyClass {
+   private $car = "skoda";
+   $driver = "SRK";
+   
+   function __construct($par) {
+      // Statements here run every time
+      // an instance of the class
+      // is created.
+   }
+   
+   function myPublicFunction() {
+      return("I'm visible!");
+   }
+   
+   private function myPrivateFunction() {
+      return("I'm  not visible outside!");
+   }
+}
+
+
+protected class:
+
+class MyClass {
+   protected $car = "skoda";
+   $driver = "SRK";
+
+   function __construct($par) {
+      // Statements here run every time
+      // an instance of the class
+      // is created.
+   }
+   
+   function myPublicFunction() {
+      return("I'm visible!");
+   }
+   
+   protected function myPrivateFunction() {
+      return("I'm  visible in child class!");
+   }
+}
+
+9)interfaces:
+
+we cannot create two interfaces at a time so in latest versions we can use same interfaces by using extends operator.
+
+interface Mail {
+   public function sendMail();
+}
+Then, if another class implemented that interface, like this -
+
+class Report implements Mail {
+   // sendMail() Definition goes here
+}
+
+10) constants: here once the value is declaredit cannot be
+changed
+
+
+class MyClass {
+   const requiredMargin = 1.7;
+   
+   function __construct($incomingValue) {
+      // Statements here run every time
+      // an instance of the class
+      // is created.
+   }
+}
+
+11) abstract class: function definitions inside an abstract class must also be preceded by the keyword abstract. 
+It is not legal to have abstract function definitions inside a non-abstract class.
+
+abstract class MyAbstractClass {
+   abstract function myAbstractFunction() {
+   }
+}
+
+12) static function:
+
+Declaring class members or methods as static makes them accessible without needing an instantiation of the class
+
+<?php
+   class Foo {
+      public static $my_static = 'foo';
+      
+      public function staticValue() {
+         return self::$my_static;
+      }
+   }
+	
+   print Foo::$my_static . "\n";
+   $foo = new Foo();
+   
+   print $foo->staticValue() . "\n";
+?>	
+
+13) final  keyword:
+PHP 5 introduces the final keyword, which prevents child classes from overriding a method by prefixing the definition with final. 
+If the class itself is being defined final then it cannot be extended.
+
+<?php
+
+   class BaseClass {
+      public function test() {
+         echo "BaseClass::test() called<br>";
+      }
+      
+      final public function moreTesting() {
+         echo "BaseClass::moreTesting() called<br>";
+      }
+   }
+   
+   class ChildClass extends BaseClass {
+      public function moreTesting() {
+         echo "ChildClass::moreTesting() called<br>";
+      }
+   }
+?>
+14) calling parent constructors:
+
+instead of writing an entirely new constructor for the subclass, let's write it by calling the parent's constructor explicitly 
+
+class Name {
+   var $_firstName;
+   var $_lastName;
+   
+   function Name($first_name, $last_name) {
+      $this->_firstName = $first_name;
+      $this->_lastName = $last_name;
+   }
+   
+   function toString() {
+      return($this->_lastName .", " .$this->_firstName);
+   }
+}
+class NameSub1 extends Name {
+   var $_middleInitial;
+   
+   function NameSub1($first_name, $middle_initial, $last_name) {
+      Name::Name($first_name, $last_name);
+      $this->_middleInitial = $middle_initial;
+   }
+   
+   function toString() {
+      return(Name::toString() . " " . $this->_middleInitial);
+   }
+}
+The constructor of NameSub1 functions by calling its parent constructor explicitly using the :: syntax (passing two of its arguments along)
+ and then setting an additional field

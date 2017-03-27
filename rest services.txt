@@ -1,0 +1,78 @@
+REST stands for REpresentational State Transfer. REST is web standards based architecture and uses HTTP Protocol for data communication.
+HTTP Methods:
+
+Following well known HTTP methods are commonly used in REST based architecture.
+
+GET - Provides a read only access to a resource.
+
+PUT - Used to create a new resource.
+
+DELETE - Used to remove a resource.
+
+POST - Used to update a existing resource or create a new resource.
+
+OPTIONS - Used to get the supported operations on a resource.
+
+A web service is a collection of open protocols and standards used for exchanging data between applications or systems. 
+Software applications written in various programming languages and running on various platforms can use web services to exchange data over 
+computer networks like the Internet in a manner similar to inter-process communication on a single computer. 
+
+A RESTful web service usually defines a URI, Uniform Resource Identifier a service, provides resource representation such as JSON and set of HTTP Methods.
+
+What is a Resource?
+
+REST architecture treats every content as a resource. These resources can be text files, html pages, images, videos or 
+dynamic business data. REST Server simply provides access to resources and REST client accesses and modifies the resources.
+Here each resource is identified by URIs/ global IDs. REST uses various representations to represent a 
+resource where text, JSON, XML. XML and JSON are the most popular representations of resources.
+
+Good Resources Representation
+
+REST does not impose any restriction on the format of a resource representation. A client can ask for 
+JSON representation where as another client may ask for XML representation of same resource to the server and so on. 
+It is responsibility of the REST server to pass the client the resource in the format that client understands.
+
+Following are important points to be considered while designing a representation format of a resource in a RESTful web services.
+
+Understandability: Both Server and Client should be able to understand and utilize the representation format of the resource.
+
+
+RESTful Web Services - Messages:
+
+RESTful web services make use of HTTP protocol as a medium of communication between client and server. 
+A client sends a message in form of a HTTP Request and server responds in form of a HTTP Response. This technique is termed as Messaging. 
+
+<?php
+/* 
+A domain Class to demonstrate RESTful web services
+*/
+Class Mobile {
+	
+	private $mobiles = array(
+		1 => 'Apple iPhone 6S',  
+		2 => 'Samsung Galaxy S6',  
+		3 => 'Apple iPhone 6S Plus',  			
+		4 => 'LG G4',  			
+		5 => 'Samsung Galaxy S6 edge',  
+		6 => 'OnePlus 2');
+		
+	/*
+		you should hookup the DAO here
+	*/
+	public function getAllMobile(){
+		return $this->mobiles;
+	}
+	
+	public function getMobile($id){
+		
+		$mobile = array($id => ($this->mobiles[$id]) ? $this->mobiles[$id] : $this->mobiles[1]);
+		return $mobile;
+	}	
+}
+?>
+These messages contain message data and metadata i.e. information about message itself.
+
+Completeness: Format should be able to represent a resource completely. For example, a resource can contain another resource. 
+Format should be able to represent simple as well as complex structures of resources.
+
+Linkablity: A resource can have a linkage to another resource, a format should be able to handles such situations.

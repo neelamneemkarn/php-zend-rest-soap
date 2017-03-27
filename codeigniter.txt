@@ -1,0 +1,87 @@
+CODEIGNITER:
+
+CodeIgniter is a powerful PHP framework with a very small footprint, built for developers who need a simple and
+elegant toolkit to create full-featured web applications
+
+CodeIgniter Features
+Some of the important features of CodeIgniter are listed below -
+
+Model-View-Controller Based System
+
+Extremely Light Weight
+
+Full Featured database classes with support for several platforms.
+
+Query Builder Database Support
+
+Form and Data Validation
+
+Security and XSS Filtering
+
+Session Management
+
+Email Sending Class. Supports Attachments, HTML/Text email, multiple protocols (sendmail, SMTP, and Mail) and more.
+
+Image Manipulation Library (cropping, resizing, rotating, etc.). Supports GD, ImageMagick, and NetPBM
+
+File Uploading Class
+
+FTP Class
+
+Localization
+
+Pagination
+
+Data Encryption
+
+Benchmarking
+
+Full Page Caching
+
+Error Logging
+
+Application Profiling
+
+Calendaring Class
+
+User Agent Class
+
+Zip Encoding Class
+
+Template Engine Class
+
+Trackback Class
+
+XML-RPC Library
+
+Unit Testing Class
+
+Search-engine Friendly URLs
+
+Flexible URI Routing
+
+Support for Hooks and Class Extensions
+
+Large library of “helper” functions
+
+
+CodeIgniter directory structure is divided into 3 folders -
+
+Application: contains all the code of your application that you are building.
+System :This folder contains CodeIgniter core codes, libraries, helpers and other files, which help make the coding easy.
+User_guide:It is basically, the offline version of user guide on CodeIgniter website.
+
+Controllers:
+
+A controller is a simple class file. As the name suggests, it controls the whole application by URI.
+<?php 
+   class Test extends CI_Controller {
+  
+      public function index() { 
+         echo "Hello World!"; 
+      } 
+   } 
+?>
+The Test class extends an in-built class called CI_Controller. This class must be extended whenever you want to make your own Controller class.
+
+
